@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/index/HOSPITALS',function(){
+    return view('HOSPITALS');
+});
+Route::get('/index/DOCTORS',function(){
+    return view('DOCTORS');
+});
+Route::get('/index/WARDS',function(){
+    return view('WARDZ');
+});
+Route::get('/index/BESTFORYOU',function(){
+    return view('BESTFORYOU');
+});
+Route::get('/index/REGISTER',function(){
+    return view('REGISTER');
+});
+Route::get('/index/Admin',function(){
+    return view('Admin');
+});
+Route::get('/index/HospitalSearch',function(){
+    return view('HospitalSearch');
+});
+Route::get('/index/DoctorSearch',function(){
+    return view('DoctorSearch');
+});
+Route::get('/index/WardSearch',function(){
+    return view('WardSearch');
+}); 
+Route::post('/index/HOSPITALS','HospitalController@store');
+Route::post('/index/WARDS','WardController@store');
+Route::post('/index/DOCTORS','DocotorController@store');
