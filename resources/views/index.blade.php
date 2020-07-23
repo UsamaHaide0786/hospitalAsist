@@ -177,7 +177,7 @@
         <div class="single-cta text-center mt-50 mb-100">
           <i class="icon_heart_alt"></i>
           <h2><span class="counter">700</span>+</h2>
-          <h5>Happy Patients</h5>
+          <h5>Happy Users</h5>
         </div>
       </div>
 

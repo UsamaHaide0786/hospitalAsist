@@ -9,12 +9,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-  <title>HospitaAssist</title>
+  <title>HospitalAssist</title>
 
 
   <link rel="icon" href= "{{ URL::asset('images/core-img/favicon.ico') }}">
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{asset('css/masterstyle.css')}}">
   <link rel="stylesheet" href="{{asset('css/animate.css')}}">
   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -68,7 +71,7 @@
           <nav class="classy-navbar justify-content-between" id="dentoNav">
 
 
-            <a class="nav-brand" href="index.html"><img src="{{ URL::asset('images/core-img/logo.png') }}" alt=""></a>
+            <a class="nav-brand" href=""><img src="{{ URL::asset('images/core-img/logo.png') }}" alt=""></a>
 
 
             <div class="classy-navbar-toggler">
@@ -86,10 +89,10 @@
               <!-- Nav Start -->
               <div class="classynav">
                 <ul id="nav">
-                  <li><a href="index.html">Hospitals</a></li>
-                  <li><a href="#">Doctors</a></li>
-                  <li><a href="contact.html">Wardz</a></li>
-                  <li><a href="#">BestForYou</a></li>
+                  <li><a href="">Hospitals</a></li>
+                  <li><a href="">Doctors</a></li>
+                  <li><a href="">Wardz</a></li>
+                  <li><a href="">BestForYou</a></li>
                 </ul>
                 </ul>
               </div>
@@ -110,7 +113,7 @@
         <!-- Single Footer Widget -->
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="single-footer-widget">
-            <a href="./index.html" class="d-block mb-4"><img src="{{ URL::asset('images/core-img/logo.png') }}" alt=""></a>
+            <a href="" class="d-block mb-4"><img src="{{ URL::asset('images/core-img/logo.png') }}" alt=""></a>
             <p>With a background in the healthcare software industry and a desire to build great technology to help companies succeed in making healthcare better.</p>
             <div class="footer-contact">
               <p><i class="icon_pin"></i> 28 Ali Road, Lahore, 7788569 Pakistan</p>
