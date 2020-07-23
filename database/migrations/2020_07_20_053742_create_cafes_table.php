@@ -15,6 +15,9 @@ class CreateCafesTable extends Migration
     {
         Schema::create('cafes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->int('ward_id');
+            $table->int('hospital_id');
             $table->timestamps();
         });
     }

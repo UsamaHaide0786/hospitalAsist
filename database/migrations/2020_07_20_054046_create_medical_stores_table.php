@@ -15,6 +15,9 @@ class CreateMedicalStoresTable extends Migration
     {
         Schema::create('medical_stores', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->int('ward_id');
+            $table->int('hospital_id');
             $table->timestamps();
         });
     }
