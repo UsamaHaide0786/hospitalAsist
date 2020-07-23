@@ -16,12 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/home',function(){
-    return view('home');
+Route::get('/index/HOSPITALS/',function(){
+    return view('HOSPITALS');
 });
-Route::get('/home/hospitals',function(){
-    return view('hospitals');
+Route::get('/index/DOCTORS/',function(){
+    return view('DOCTORS');
 });
-Route::get('/home/doctors',function(){
-    return view('doctors');
+Route::get('/index/WARDS/',function(){
+    return view('WARDZ');
 });
+Route::get('/index/BESTFORYOU/',function(){
+    return view('BESTFORYOU');
+});
+Route::get('/index/REGISTER/',function(){
+    return view('REGISTER');
+});
+Route::get('/index/Admin/',function(){
+    return view('Admin');
+});
+Route::get('/index/HospitalSearch/',function(){
+    return view('HospitalSearch');
+});
+Route::get('/index/DoctorSearch/',function(){
+    return view('DoctorSearch');
+});
+Route::get('/index/WardSearch/',function(){
+    return view('WardSearch');
+}); 
