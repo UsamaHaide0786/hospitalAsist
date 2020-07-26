@@ -17,7 +17,7 @@
         <div class="col-12">
           <!-- Admin Login Form -->
           <div class="Login-form">
-            <form action="#" method="post">
+            <form action="/ADMIN/Login/" >
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group mb-30">

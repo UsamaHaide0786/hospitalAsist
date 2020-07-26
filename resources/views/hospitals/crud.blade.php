@@ -35,16 +35,19 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach ($hospitals as $h)
 					<tr>
-						<td>1</td>
-						<td>Jinnah</td>
-						<td>89 Chiaroscuro Rd, Portland, USA</td>
-						<td>Goverment</td>
-            <td>1998-02-12</td>
+						<td>{{$h->id}}</td>
+						<td>{{$h->name}}</td>
+						<td>{{$h->address}}</td>
+						<td>{{$h->ownership}}</td>
+            <td>{{$h->since}}</td>
+
 						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<a href="/update"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<a href="#deleteEmployeeModal" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 						</td>
+						@endforeach
             </tr>
 				</tbody>
 			</table>

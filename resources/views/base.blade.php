@@ -71,7 +71,7 @@
           <nav class="classy-navbar justify-content-between" id="dentoNav">
 
 
-            <a class="nav-brand" href=""><img src="{{ URL::asset('images/core-img/logo.png') }}" alt=""></a>
+            <a class="nav-brand" href="/"><img src="{{ URL::asset('images/core-img/logo.png') }}" alt=""></a>
 
 
             <div class="classy-navbar-toggler">
@@ -89,16 +89,16 @@
               <!-- Nav Start -->
               <div class="classynav">
                 <ul id="nav">
-                  <li><a href="">Hospitals</a></li>
-                  <li><a href="">Doctors</a></li>
-                  <li><a href="">Wardz</a></li>
+                  <li><a href="/HOSPITALS">Hospitals</a></li>
+                  <li><a href="/DOCTORS">Doctors</a></li>
+                  <li><a href="/WARDS">Wardz</a></li>
                   <li><a href="">BestForYou</a></li>
                 </ul>
                 </ul>
               </div>
             </div>
-            <a href="#" class="btn dento-btn booking-btn">Register</a>
-            <a href="#" class="btn dento-btn booking-btn">Admin Login</a>
+            <a href="/REGISTER" class="btn dento-btn booking-btn">Register</a>
+            <a href="/ADMIN" class="btn dento-btn booking-btn">Admin Login</a>
           </nav>
         </div>
       </div>
