@@ -38,7 +38,9 @@ class HospitalController extends Controller
       ]);
 
       Hospital::create($request->all());
-      return redirect("registered")->with('success','Product created successfully.');
+
+      return redirect()->route('hospitals.index')
+                ->with('success','Product created successfully.');
 
 
                       }
@@ -67,14 +69,14 @@ class HospitalController extends Controller
       * @param  \App\Hospital
       * @return \Illuminate\Http\Response
       */
-     public function edit($id)
+     public function edit(Hospital $hospital)
      {
-        $hospitals = Hospital::find($id);
-        return view('hospitals.update',compact('hospitals','id'));
+        ;
+        return view('hospitals.update',compact('hospital'));
 
      }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Hospital $hospital)
     {
       $request->validate([
           'id' => 'required',
@@ -83,16 +85,10 @@ class HospitalController extends Controller
           'ownership' => 'required',
           'since' => 'required',
       ]);
-      $hospitals = Hospital::find($id);
-      $hospitals->id = $request->get('id');
-      $hospitals->name = $request->get('name');
-      $hospitals->address = $request->get('address');
-      $hospitals->ownership = $request->get('ownership');
-      $hospitals->since = $request->get('since');
-      $hospitals->save();
 
      $hospital->update($request->all());
-     return redirect("registered")->with('success','Product created successfully.');
+     return redirect()->route('hospitals.index')
+               ->with('success','Product updated successfully.');
     }
 
     /**
@@ -103,6 +99,8 @@ class HospitalController extends Controller
      */
     public function destroy(Hospital $hospital)
     {
-        //
+        $hospital->delete();
+        return redirect()->route('hospitals.index')
+                  ->with('success','Product deleted successfully.');
     }
 }

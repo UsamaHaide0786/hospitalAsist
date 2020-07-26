@@ -27,8 +27,9 @@
                </div>
               @endif
           <div class="appointment-form">
-            <form action="{{action('/update',$hospitals->id)}}" method="POST">
-              {{ csrf_field() }}
+            <form action="{{ route('hospitals.update',$hospital->id) }}" method="POST">
+              @csrf
+              @method('PUT')
 
               <div class="row">
                 <div class="col-md-6">

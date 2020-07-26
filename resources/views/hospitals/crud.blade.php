@@ -19,7 +19,7 @@
 						<h2>Manage <b>Hospital</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('hospitals.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
 					</div>
 				</div>
 			</div>
@@ -35,17 +35,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($hospitals as $h)
+					@foreach ($hospitals as $hospital)
 					<tr>
-						<td>{{$h->id}}</td>
-						<td>{{$h->name}}</td>
-						<td>{{$h->address}}</td>
-						<td>{{$h->ownership}}</td>
-            <td>{{$h->since}}</td>
+						<td>{{$hospital->id}}</td>
+						<td>{{$hospital->name}}</td>
+						<td>{{$hospital->address}}</td>
+						<td>{{$hospital->ownership}}</td>
+            <td>{{$hospital->since}}</td>
 
 						<td>
-							<a href="/update"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							 <form action="{{ route('hospitals.destroy',$hospital->id) }}" method="POST">
+							<a href="{{ route('hospitals.edit',$hospital->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
 						</td>
 						@endforeach
             </tr>
