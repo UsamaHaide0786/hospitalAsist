@@ -27,13 +27,13 @@
                </div>
               @endif
           <div class="appointment-form">
-            <form action="/done" method="POST">
+            <form action="{{action('/update',$hospitals->id)}}" method="POST">
               {{ csrf_field() }}
 
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <input type="text" name="id" class="form-control" placeholder="ID" required>
+                    <input type="text" name="id" class="form-control" placeholder="ID Of updating object" required>
                   </div>
                 </div>
                 <div class="col-md-6">

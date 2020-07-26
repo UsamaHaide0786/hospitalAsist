@@ -55,12 +55,12 @@
       <!-- Single Blog Item -->
       <div class="col-12 col-md-6 col-lg-4">
         <div class="single-blog-item mb-100">
-          <a href="./blog-details.html">
+          <a href="/HospitalSearch">
             <img src="{{ URL::asset('images/bg-img/7.jpg') }}" alt="">
           </a>
           <!-- Blog Content -->
           <div class="blog-content">
-            <a href="./blog-details.html" class="post-title"><h1>Find a Hospital</h1></a>
+            <a href="/HospitalSearch" class="post-title"><h1>Find a Hospital</h1></a>
             <p>Go for a Hospital of your choice</p>
             <h6>we are here to serve you</h6>
 
@@ -71,12 +71,12 @@
       <!-- Single Blog Item -->
       <div class="col-12 col-md-6 col-lg-4">
         <div class="single-blog-item mb-100">
-          <a href="./blog-details.html">
+          <a href="/DoctorSearch">
             <img src="{{ URL::asset('images/bg-img/3.jpg') }}" alt="">
           </a>
           <!-- Blog Content -->
           <div class="blog-content">
-            <a href="./blog-details.html" class="post-title"><h1>Find a Doctor</h1></a>
+            <a href="/DoctorSearch" class="post-title"><h1>Find a Doctor</h1></a>
             <p>Go for a Doctor of your choice</p>
             <h6>we are here to serve you</h6>
           </div>
@@ -86,12 +86,12 @@
       <!-- Single Blog Item -->
       <div class="col-12 col-md-6 col-lg-4">
         <div class="single-blog-item mb-100">
-          <a href="./blog-details.html">
+          <a href="/WardSearch">
             <img src="{{ URL::asset('images/bg-img/13.jpg') }}" alt="">
           </a>
           <!-- Blog Content -->
           <div class="blog-content">
-            <a href="./blog-details.html" class="post-title"><h1>Find a ward</h1></a>
+            <a href="/WardSearch" class="post-title"><h1>Find a ward</h1></a>
             <p>Go for a ward of your choice</p>
             <h6>we are here to serve you</h6>
           </div>

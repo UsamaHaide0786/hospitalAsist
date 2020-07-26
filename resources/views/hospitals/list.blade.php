@@ -29,8 +29,8 @@
 				</thead>
 				<tbody>
 					<tr>
-            <th><a href="" data-toggle="modal"><span><h3>Medicare</h3></span></a></th>
-            <th><a href="" data-toggle="modal"><span><h3>89 Chiaroscuro Rd, Portland, USA</h3></span></a></th>
+            <th><a href="/HOSPITALS/DETAILS/"><span><h3>Medicare</h3></span></a></th>
+            <th><a href="/HOSPITALS/DETAILS/"><span><h3>89 Chiaroscuro Rd, Portland, USA</h3></span></a></th>
             </tr>
 				</tbody>
 			</table>
