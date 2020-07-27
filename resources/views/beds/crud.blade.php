@@ -19,7 +19,7 @@
 						<h2>Manage <b>beds</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('bed.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
 					</div>
 				</div>
 			</div>

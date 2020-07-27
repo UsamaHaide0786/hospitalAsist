@@ -31,6 +31,17 @@ Route::get('/BESTFORYOU',function(){
 });
 
 Route::resource('hospitals','HospitalController');
+Route::resource('admins','AdminController');
+Route::resource('appointments','AppointmentController');
+Route::resource('Beds','BedController');
+Route::resource('cafes','CafeController');
+Route::resource('doctors','DoctorController');
+Route::resource('employees','EmployeeController');
+Route::resource('laboratories','LaboratoryController');
+Route::resource('medicalstores','MedicalStoreController');
+Route::resource('patients','PatientController');
+Route::resource('rooms','RoomController');
+Route::resource('wards','WardController');
 Route::get('/REGISTER','HospitalController@create');
 Route::get('/update','HospitalController@edit');
 Route::post('/done','HospitalController@update');
