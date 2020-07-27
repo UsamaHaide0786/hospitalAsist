@@ -27,7 +27,7 @@
                </div>
               @endif
           <div class="appointment-form">
-            <form action="/done" method="POST">
+            <form action="{{ route('hospitals.store') }}" method="POST">
               {{ csrf_field() }}
 
               <div class="row">
