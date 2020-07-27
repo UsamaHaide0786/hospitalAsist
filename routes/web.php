@@ -29,8 +29,10 @@ Route::get('/WARDS',function(){
 Route::get('/index/BESTFORYOU',function(){
     return view('BESTFORYOU');
 });
+
+Route::resource('hospitals','HospitalController');
 Route::get('/REGISTER','HospitalController@create');
-Route::get('/update','HospitalController@edit', ['id' => $hospitals->id]);
+Route::get('/update','HospitalController@edit');
 Route::post('/done','HospitalController@update');
 Route::post('/done','HospitalController@store');
 Route::post('/done','AdminController@store');
