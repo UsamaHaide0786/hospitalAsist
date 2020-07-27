@@ -19,7 +19,7 @@
 						<h2>Manage <b>Patients</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('patients.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
 					</div>
 				</div>
 			</div>
@@ -37,17 +37,20 @@
 					</tr>
 				</thead>
 				<tbody>
+					foreach($patients as patient)
 					<tr>
-						<td>1</td>
-						<td>Usama</td>
-						<td>Haider</td>
-						<td>Lahore</td>
-            <td>03054562332</td>
-						<td>25</td>
-            <td>M</td>
+						<td>{{$patient->id}}</td>
+						<td>{{$patient->first_name}}</td>
+						<td>{{$patient->last_name}}</td>
+						<td>{{$patient->address}}</td>
+            <td>{{$patient->mobile}}</td>
+						<td>{{$patient->age}}</td>
+            <td>{{$patient->gender}}</td>
 						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<form action="{{ route('patients.destroy',$patient->id) }}" method="POST">
+							<a href="{{ route('patients.edit',$patient->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
 						</td>
             </tr>
 				</tbody>

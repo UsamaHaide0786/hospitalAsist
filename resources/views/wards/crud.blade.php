@@ -19,7 +19,7 @@
 						<h2>Manage <b>Wards</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('wards.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
 						
 					</div>
 				</div>
@@ -37,16 +37,19 @@
 					</tr>
 				</thead>
 				<tbody>
+					foreach($wards as $ward)
 					<tr>
-						<td>1</td>
-						<td>Ent</td>
-						<td>46</td>
-						<td>10</td>
-            <td>5</td>
-            <td>Jinnah</td>
+						<td>{{$ward->id}}</td>
+						<td>{{$ward->name}}</td>
+						<td>{{$ward->room}}</td>
+						<td>{{$ward->doctor_id}}</td>
+            <td>{{$ward->operation_theater}}</td>
+            <td>{{$ward->hospital_id}}</td>
 						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<form action="{{ route('wards.destroy',$ward->id) }}" method="POST">
+							<a href="{{ route('wards.edit',$ward->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
 						</td>
             </tr>
 				</tbody>

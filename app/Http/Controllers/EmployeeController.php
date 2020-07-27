@@ -14,7 +14,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        Employee::all();
+        $employees = Employee::all();
+        return view('Employees.crud',compact('doctors'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -24,7 +26,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.crud');
     }
 
     /**
@@ -35,7 +37,18 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'position'=>'required',
+            'address'=>'required',
+            'mobile'=>'required',
+            'experience'=>'required',
+            'date_of_joining'=>'required',
+        ]);
+        Employee::create($request->all());
+        return redirect()->route('employyees.index')->with('success','employee created successfully.');
     }
 
     /**
@@ -57,7 +70,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('employees.update',compact('doctor'));
     }
 
     /**
@@ -69,7 +82,18 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'position'=>'required',
+            'address'=>'required',
+            'mobile'=>'required',
+            'experience'=>'required',
+            'date_of_joining'=>'required',
+        ]);
+        $employee->update($request->all());
+        return redirect()->route('doctors.index')->with('success','Employee updated successfully.');
     }
 
     /**
@@ -80,6 +104,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employees.index')->with('success','Entry deleted successfully.');
     }
 }

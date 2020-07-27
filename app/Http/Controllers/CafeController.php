@@ -14,7 +14,9 @@ class CafeController extends Controller
      */
     public function index()
     {
-        //
+        Cafe::all();
+        $cafes = Cafe::all();
+        return view('cafes.crud',compact('cafes'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -24,7 +26,7 @@ class CafeController extends Controller
      */
     public function create()
     {
-        //
+        return view('cafes.crud');  
     }
 
     /**
@@ -35,7 +37,14 @@ class CafeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        Cafe::create($request->all());
+        return redirect()->route('cafes.index')->with('success','Bed created successfully.');
     }
 
     /**
@@ -57,7 +66,7 @@ class CafeController extends Controller
      */
     public function edit(Cafe $cafe)
     {
-        //
+        return view('cafes.update',compact('cafe'));
     }
 
     /**
@@ -69,7 +78,14 @@ class CafeController extends Controller
      */
     public function update(Request $request, Cafe $cafe)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        $cafe->update($request->all());
+        return redirect()->route('cafes.index')->with('success','Cafe updated successfully.');
     }
 
     /**
@@ -80,6 +96,7 @@ class CafeController extends Controller
      */
     public function destroy(Cafe $cafe)
     {
-        //
+        $cafe->delete();
+        return redirect()->route()->with('success','Cafe deleted successfully');
     }
 }

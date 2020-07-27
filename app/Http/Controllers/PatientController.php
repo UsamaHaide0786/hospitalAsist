@@ -14,7 +14,9 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        Patient::all();
+        $patients = Patient::all();
+        return view('patients.crud',compact('patients'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -24,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('patients.crud');
     }
 
     /**
@@ -35,7 +37,17 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'address'=>'required',
+            'mobile'=>'required',
+            'age'=>'required',
+            'gender'=>'required',
+        ]);
+        Patient::create($request->all());
+        return redirect()->route('patients.index')->with('success','Record created successfully.');
     }
 
     /**
@@ -57,7 +69,7 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        return view('patients.update',compact('patient'));
     }
 
     /**
@@ -69,7 +81,17 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'address'=>'required',
+            'mobile'=>'required',
+            'age'=>'required',
+            'gender'=>'required',
+        ]);
+        $patient->update($request->all());
+        return redirect()->route('patients.index')->with('success','Record updated successfully.');
     }
 
     /**
@@ -80,6 +102,7 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+        return redirect()->route('patients.index')->with('success','record deleted successfully.');
     }
 }

@@ -19,7 +19,7 @@
 						<h2>Manage <b>Employees</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('doctors.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
 					</div>
 				</div>
 			</div>
@@ -34,14 +34,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($employees as $employee)
 					<tr>
-						<td>Usama</td>
-						<td>Haider</td>
-						<td>Electration</td>
-            <td>5years</td>
+						<td>{{$employee->first_name}}</td>
+						<td>{{$employee->last_name}}</td>
+						<td>{{$employee->position}}</td>
+            <td>{{$employee->experience}}</td>
 						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<form action="{{ route('employees.destroy',$employee->id) }}" method="POST">
+							<a href="{{ route('employees.edit',$employee->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
 						</td>
             </tr>
 				</tbody>

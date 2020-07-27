@@ -36,6 +36,7 @@ Route::get('/update','HospitalController@edit');
 Route::post('/done','HospitalController@update');
 Route::post('/done','HospitalController@store');
 
+
 Route::get('/registered',function(){
     return view('hospitals.registered');
 })->name('registered');

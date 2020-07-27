@@ -14,7 +14,9 @@ class WardController extends Controller
      */
     public function index()
     {
-        //
+        Ward::all();
+        $wards = Ward::all();
+        return view('wards.crud',compact('wards'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -24,7 +26,7 @@ class WardController extends Controller
      */
     public function create()
     {
-        //
+        return view('wards.details');
     }
 
     /**
@@ -35,7 +37,16 @@ class WardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'room'=>'required',
+            'doctor'=>'required',
+            'operation_theater'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        Ward::create($request->all());
+        return redirect()->route('wards.index')->with('success','ward created successfully.');
     }
 
     /**
@@ -57,7 +68,7 @@ class WardController extends Controller
      */
     public function edit(Ward $ward)
     {
-        //
+        return view('wards.update',compact('ward'));
     }
 
     /**
@@ -69,7 +80,16 @@ class WardController extends Controller
      */
     public function update(Request $request, Ward $ward)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'room'=>'required',
+            'doctor'=>'required',
+            'operation_theater'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        $ward->update($request->all());
+        return redirect()->route('wards.index')->with('success','entry updated successfully.');
     }
 
     /**
@@ -80,6 +100,7 @@ class WardController extends Controller
      */
     public function destroy(Ward $ward)
     {
-        //
+        $ward->delete();
+        return redirect()->route('wards.index')->with('success','record deleted successfully.');
     }
 }

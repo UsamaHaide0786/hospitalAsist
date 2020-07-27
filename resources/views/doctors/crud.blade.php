@@ -19,7 +19,7 @@
 						<h2>Manage <b>Doctors</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('doctors.create') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>	
 					</div>
 				</div>
 			</div>
@@ -36,16 +36,19 @@
 					</tr>
 				</thead>
 				<tbody>
+				@foreach ($doctors as $doctor)
 					<tr>
-						<td>Usama</td>
-						<td>Haider</td>
-						<td>8pm-10pm</td>
-						<td>dentist</td>
-            <td>5years</td>
-            <td>Dento</td>
+						<td>{{$doctor->id}}</td>
+						<td>{{$doctor->first_name}}</td>
+						<td>{{$doctor->timing}}</td>
+						<td>{{$doctor->sepciality}}</td>
+            <td>{{$doctor->experience}}</td>
+            <td>{{$doctor->ward_id}}</td>
 						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<form action ="{{ route('doctors.destroy',$doctor->id}}" method = "POST">
+							<a href="{{ route('doctors.edit',$doctor->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+</form>
 						</td>
             </tr>
 				</tbody>

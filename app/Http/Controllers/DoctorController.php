@@ -14,7 +14,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        Doctor::all();
+        $doctors = Doctor::all();
+        return view('doctors.crud',compact('doctors'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -24,7 +26,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctors.details');
     }
 
     /**
@@ -35,7 +37,18 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['id'=>'required',
+        'first_name'=>'required',
+        'last_name'=>'required',
+        'address'=>'required',
+        'mobile'=>'required',
+        'timing'=>'required',
+        'speciality'=>'required',
+        'experience'=>'required',
+        'date_of_joining'=>'required',
+        'ward_id'=>'required']);
+        Doctor::create($request->all());
+        return redirect()->route('doctors.index')->with('success','Entry created successfully.');
     }
 
     /**
@@ -57,7 +70,7 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        //
+        return view('doctors.update',compact('doctor'));
     }
 
     /**
@@ -69,7 +82,18 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
-        //
+        $request->validate(['id'=>'required',
+        'first_name'=>'required',
+        'last_name'=>'required',
+        'address'=>'required',
+        'mobile'=>'required',
+        'timing'=>'required',
+        'speciality'=>'required',
+        'experience'=>'required',
+        'date_of_joining'=>'required',
+        'ward_id'=>'required']);
+        $doctor->update($request->all());
+        return redirect()->route('doctors.index')->with('success','Doctor updated successfully.');
     }
 
     /**
@@ -80,6 +104,7 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+        $doctor->delete();
+        return redirect()->route('doctors.index')->with('success','Entry deleted successfully.');
     }
 }
