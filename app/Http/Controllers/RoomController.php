@@ -24,7 +24,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('rooms.crud');
     }
 
     /**
@@ -35,7 +35,14 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'no_of_beds'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        Room::create($request->all());
+        return redirect('added')->with('success','Room added successfully.');
     }
 
     /**

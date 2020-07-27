@@ -24,7 +24,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.crud');
     }
 
     /**
@@ -35,7 +35,18 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'position'=>'required',
+            'address'=>'required',
+            'mobile'=>'required',
+            'experience'=>'required',
+            'date_of_joining'=>'required',
+        ]);
+        Employee::create($request->all());
+        return redirect('added')->with('sucess','employee added successfully.');
     }
 
     /**

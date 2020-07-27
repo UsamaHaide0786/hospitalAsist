@@ -24,7 +24,7 @@ class CafeController extends Controller
      */
     public function create()
     {
-        //
+        return view('cafes.crud');  
     }
 
     /**
@@ -35,7 +35,14 @@ class CafeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        Cafe::create($request->all());
+        return redirect('Added')->with('success','Bed added successfully.');
     }
 
     /**

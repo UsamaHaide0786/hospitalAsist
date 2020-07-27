@@ -24,7 +24,7 @@ class LaboratoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('laboratories.crud');
     }
 
     /**
@@ -35,7 +35,14 @@ class LaboratoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required'
+        ]);
+        Laboratory::create($request->all());
+        return redirect('Added')->with('success','Added successfully.');
     }
 
     /**

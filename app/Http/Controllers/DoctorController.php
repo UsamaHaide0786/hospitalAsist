@@ -24,7 +24,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctors.details');
     }
 
     /**
@@ -35,7 +35,18 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['id'=>'required',
+        'first_name'=>'required',
+        'last_name'=>'required',
+        'address'=>'required',
+        'mobile'=>'required',
+        'timing'=>'required',
+        'speciality'=>'required',
+        'experience'=>'required',
+        'date_of_joining'=>'required',
+        'ward_id'=>'required']);
+        Doctor::create($request->all());
+        return redirect('Added')->with('success','Entry added successfully.');
     }
 
     /**

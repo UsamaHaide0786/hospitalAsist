@@ -24,7 +24,7 @@ class BedController extends Controller
      */
     public function create()
     {
-        //
+        return view('beds.crud');
     }
 
     /**
@@ -35,7 +35,14 @@ class BedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'room_id'=>'required',
+            'patient_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        Bed::create($request->all());
+        return redirect('Added')->with('success','Bed added successfully.');
     }
 
     /**

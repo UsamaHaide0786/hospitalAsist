@@ -24,7 +24,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('appointments.crud');
     }
 
     /**
@@ -35,7 +35,17 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'date_of_appointment'=>'required',
+            'time_of_appointment'=>'required',
+            'patient_id'=>'required',
+            'doctor_id'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        Appointment::create($request->all());
+        return redirect("added")->with('Success','Appointent added successfully.');
     }
 
     /**

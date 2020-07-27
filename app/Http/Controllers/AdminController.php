@@ -24,7 +24,14 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+        Admin::create($request->all());
+        return redirect('added')->with('success','Admin added successfully.');
     }
 
     /**

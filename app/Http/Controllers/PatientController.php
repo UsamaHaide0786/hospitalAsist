@@ -24,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('patients.crud');
     }
 
     /**
@@ -35,7 +35,17 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'address'=>'required',
+            'mobile'=>'required',
+            'age'=>'required',
+            'gender'=>'required',
+        ]);
+        Patient::create($request->all());
+        return redirect('added')->with('success','Patient added successfully.');
     }
 
     /**

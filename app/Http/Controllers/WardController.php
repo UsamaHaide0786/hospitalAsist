@@ -24,7 +24,7 @@ class WardController extends Controller
      */
     public function create()
     {
-        //
+        return view('wards.details');
     }
 
     /**
@@ -35,7 +35,16 @@ class WardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'room'=>'required',
+            'doctor'=>'required',
+            'operation_theater'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        Ward::create($request->all());
+        return redirect('added')->with('success','ward added successfully.');
     }
 
     /**
