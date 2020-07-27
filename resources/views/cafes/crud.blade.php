@@ -19,7 +19,7 @@
 						<h2>Manage <b>Cafes</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('cafes.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
 
 					</div>
 				</div>
@@ -35,14 +35,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					foreach($cafes as $cafe)
 					<tr>
-						<td>1</td>
-						<td>CokeCafe</td>
-						<td>Ent</td>
-						<td>Jinnah</td>
+						<td>{{$cafe->id}}</td>
+						<td>{{$cafe->name}}</td>
+						<td>{{$cafe->ward_id}}</td>
+						<td>{{$cafe->hospital_id}}</td>
             <td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<form action="{{ route('cafes.destroy',$cafe->id) }}" method="POST">
+							<a href="{{ route('cafes.edit',$cafe->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
 						</td>
             </tr>
 				</tbody>

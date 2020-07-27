@@ -14,7 +14,9 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        Room::all();
+        $rooms = Room::all();
+        return view('rooms.crud',compact('rooms'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -42,7 +44,7 @@ class RoomController extends Controller
             'hospital_id'=>'required',
         ]);
         Room::create($request->all());
-        return redirect('added')->with('success','Room added successfully.');
+        return redirect()->route('rooms.index')->with('success','Room created successfully.');
     }
 
     /**
@@ -64,7 +66,7 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        return view('rooms.update',compact('room'));
     }
 
     /**
@@ -76,7 +78,14 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'no_of_beds'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        $room->update($request->all());
+        return redirect()->route('rooms.index')->with('success','record updated successfully.');
     }
 
     /**
@@ -87,6 +96,7 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        $room->delete();
+        return redirect()->route('rooms.index')->with('success','entry deleted successfully.');
     }
 }

@@ -14,7 +14,9 @@ class BedController extends Controller
      */
     public function index()
     {
-        //
+        Bed::all();
+        $beds = Bed::all();
+        return view('beds.crud',compact('beds'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -42,7 +44,7 @@ class BedController extends Controller
             'hospital_id'=>'required',
         ]);
         Bed::create($request->all());
-        return redirect('Added')->with('success','Bed added successfully.');
+        return redirect()->route('beds.index')->with('success','Bed created successfully.');
     }
 
     /**
@@ -64,7 +66,7 @@ class BedController extends Controller
      */
     public function edit(Bed $bed)
     {
-        //
+        return view('beds.update',compact('hospital'));
     }
 
     /**
@@ -76,7 +78,14 @@ class BedController extends Controller
      */
     public function update(Request $request, Bed $bed)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'room_id'=>'required',
+            'patient_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        $bed->update($request->all());
+        return redirect()->route('beds.index')->with('success','Bed updated successfully.');
     }
 
     /**
@@ -87,6 +96,7 @@ class BedController extends Controller
      */
     public function destroy(Bed $bed)
     {
-        //
+        $bed->delete();
+        return redirect()->route('beds.index')->with('success','Bed deleted successfully.');
     }
 }

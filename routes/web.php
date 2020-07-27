@@ -35,16 +35,7 @@ Route::get('/REGISTER','HospitalController@create');
 Route::get('/update','HospitalController@edit');
 Route::post('/done','HospitalController@update');
 Route::post('/done','HospitalController@store');
-Route::post('/done','AdminController@store');
-Route::post('/done','AppointmentController@store');
-Route::post('/done','BedController@store');
-Route::post('/done','CafeController@store');
-Route::post('/done','DoctorController@store');
-Route::post('/done','EmployeeController@store');
-Route::post('/done','LaboratoryController@store');
-Route::post('/done','PatientController@store');
-Route::post('/done','RoomController@store');
-Route::post('/done','WardController@store');
+
 
 Route::get('/registered',function(){
     return view('hospitals.registered');

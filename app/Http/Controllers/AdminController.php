@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,14 +24,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $request->validate([
-            'id'=>'required',
-            'name'=>'required',
-            'email'=>'required',
-            'password'=>'required',
-        ]);
-        Admin::create($request->all());
-        return redirect('added')->with('success','Admin added successfully.');
+       //
     }
 
     /**
@@ -42,7 +35,14 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+        Admin::create($request->all());
+        return redirect()->route('admins.index')->with('success','Admin added successfully.');
     }
 
     /**
@@ -64,7 +64,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        return view('hospitals.update',compact('admin'));
     }
 
     /**
@@ -76,7 +76,14 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+        $admin->update($request->all());
+        return redirect()->route('admins.index')->with('success','Admin updated successfully.');
     }
 
     /**
@@ -87,6 +94,7 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        $admin->delete();
+        return redirect()->route('admins.index')->with('success','Admin deleted successfully.');
     }
 }

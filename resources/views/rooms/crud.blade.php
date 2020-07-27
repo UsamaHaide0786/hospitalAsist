@@ -19,7 +19,7 @@
 						<h2>Manage <b>Rooms</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('rooms.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></>
 					</div>
 				</div>
 			</div>
@@ -34,14 +34,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					foreach($rooms as $room)
 					<tr>
-						<td>1</td>
-						<td>6</td>
-						<td>Gayna</td>
-						<td>Doctors</td>
+						<td>{{$room->id}}</td>
+						<td>{{$room->no_of_bed}}</td>
+						<td>{{$room->ward_id}}</td>
+						<td>{{$room->hospital_id}}</td>
             <td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<form action="{{ route('rooms.destroy',$room->id) }}" method="POST">
+							<a href="{{ route('rooms.edit',$room->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
 						</td>
             </tr>
 				</tbody>

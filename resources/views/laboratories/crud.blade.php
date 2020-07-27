@@ -19,7 +19,7 @@
 						<h2>Manage <b>Laboratories</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+						<a href="{{ route('laboratories.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
 
 					</div>
 				</div>
@@ -35,14 +35,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					($laboratories as $laboratory)
 					<tr>
-						<td>1</td>
-						<td>chugtais</td>
-						<td>Ent</td>
-						<td>Jinnah</td>
+						<td>{{$laboratory->id}}</td>
+						<td>{{$laboratory->name}}</td>
+						<td>{{$laboratory->ward_id}}</td>
+						<td>{{$laboratory->hospital_id}}</td>
             <td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<form action="{{ route('laboratories.destroy',$laboratory->id) }}" method="POST">
+							<a href="{{ route('laboratories.edit',$laboratory->id) }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
 						</td>
             </tr>
 				</tbody>

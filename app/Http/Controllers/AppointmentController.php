@@ -14,7 +14,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        Appointment::all();
+        $appointments = Appointment::all();
+        return view('appointments.crud',compact('appointments'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -45,7 +47,7 @@ class AppointmentController extends Controller
             'hospital_id'=>'required',
         ]);
         Appointment::create($request->all());
-        return redirect("added")->with('Success','Appointent added successfully.');
+        return redirect()->route('appointments.index')->with('Success','Appointent created successfully.');
     }
 
     /**
@@ -67,7 +69,7 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        return view('appointments.update',compact('appointment'));
     }
 
     /**
@@ -79,7 +81,17 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'date_of_appointment'=>'required',
+            'time_of_appointment'=>'required',
+            'patient_id'=>'required',
+            'doctor_id'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required',
+        ]);
+        $appointment->update($request->all());
+        return redirect()->route('appointments.index')->with('success','Appointment updated successfully.');
     }
 
     /**
@@ -90,6 +102,8 @@ class AppointmentController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        $appointment->delete();
+        return redirect()->route('appointments.index')->with('success','Appointment deleted successfully.');
     }
+
 }

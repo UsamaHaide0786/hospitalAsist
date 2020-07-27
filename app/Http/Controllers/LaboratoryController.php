@@ -14,7 +14,9 @@ class LaboratoryController extends Controller
      */
     public function index()
     {
-        //
+        Laboratory::all();
+        $laboratories = Laboratory::all();
+        return view('laboratories.crud',compact('laboratories'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -42,7 +44,7 @@ class LaboratoryController extends Controller
             'hospital_id'=>'required'
         ]);
         Laboratory::create($request->all());
-        return redirect('Added')->with('success','Added successfully.');
+        return redirect()->route('laboratories.index')->with('success','laboratory created successfully.');
     }
 
     /**
@@ -64,7 +66,7 @@ class LaboratoryController extends Controller
      */
     public function edit(Laboratory $laboratory)
     {
-        //
+        return view('laboratories.update',compact('laboratory'));
     }
 
     /**
@@ -76,7 +78,14 @@ class LaboratoryController extends Controller
      */
     public function update(Request $request, Laboratory $laboratory)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'ward_id'=>'required',
+            'hospital_id'=>'required'
+        ]);
+        $laboratory->update($request->all());
+        return redirect()->route('laboratories.index')->with('success','laboratory updated successfully.');
     }
 
     /**
@@ -87,6 +96,7 @@ class LaboratoryController extends Controller
      */
     public function destroy(Laboratory $laboratory)
     {
-        //
+        $laboratory->delete();
+        return redirect()->route('laboratories.index')->with('success','Record deleted successfully.');
     }
 }
