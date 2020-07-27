@@ -92,7 +92,7 @@
                   <li><a href="/HOSPITALS">Hospitals</a></li>
                   <li><a href="/DOCTORS">Doctors</a></li>
                   <li><a href="/WARDS">Wardz</a></li>
-                  <li><a href="">BestForYou</a></li>
+                  <li><a href="/BESTFORYOU">BestForYou</a></li>
                 </ul>
                 </ul>
               </div>
