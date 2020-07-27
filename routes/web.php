@@ -26,8 +26,8 @@ Route::get('/DOCTORS',function(){
 Route::get('/WARDS',function(){
     return view('wards.list');
 });
-Route::get('/index/BESTFORYOU',function(){
-    return view('BESTFORYOU');
+Route::get('/BESTFORYOU',function(){
+    return view('hospitals.best_for_you');
 });
 
 Route::resource('hospitals','HospitalController');
